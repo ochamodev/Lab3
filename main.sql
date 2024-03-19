@@ -10,3 +10,8 @@ CREATE TABLE DATE_DIMENSION(
     CALENDAR_QUARTER ENUM('Q1', 'Q2', 'Q3', 'Q4'),
     CALENDAR_YEAR INT
 );
+CREATE TABLE cashier_dimension (
+    cashier_key INT PRIMARY KEY,
+    cashier_employee_id INT NOT NULL UNIQUE,
+    cashier_name VARCHAR(100)
+);
