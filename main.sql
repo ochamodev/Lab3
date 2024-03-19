@@ -24,6 +24,7 @@ CREATE TABLE store_dimension (
   store_name VARCHAR(255) NOT NULL,
   store_disrict VARCHAR(50) NOT NULL,
   store_region VARCHAR(50) NOT NULL,
+  UNIQUE(store_key)
 );
 
 CREATE TABLE product_dimension(
@@ -42,6 +43,13 @@ CREATE TABLE promotion_dimention(
     promotion_media_type VARCHAR(100) NOT NULL,
     promotion_begin_date DATETIME NOT NULL,
     UNIQUE(promotion_key)
+);
+
+CREATE TABLE payment_method_dimension(
+    payment_method_key INT AUTO_INCREMENT PRIMARY KEY,
+    payment_method_description VARCHAR(100) NOT NULL,
+    payment_method_group VARCHAR(100) NOT NULL,
+    UNIQUE(payment_method_key)
 );
 
 CREATE TABLE rental_sales_facts (
