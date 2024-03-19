@@ -1,26 +1,6 @@
-CREATE TABLE rental_sales_facts (
-    date_key INT,
-    product_key INT,
-    store_key INT,
-    promotion_key INT,
-    cashier_key INT,
-    payment_method_key INT,
-    pos_transaction_id INT,
-    sales_quantity INT,
-    regular_unit_price DECIMAL(10, 2),
-    discount_unit_price DECIMAL(10, 2),
-    extended_discount_dollar_amount DECIMAL(10, 2),
-    extended_sales_dollar_amount DECIMAL(10, 2),
-    extended_cost_dollar_amount DECIMAL(10, 2),
-    extended_gross_profit_dollar_amount DECIMAL(10, 2),
-    FOREIGN KEY (date_key) REFERENCES cashier_dimension(cashier_key),
-    FOREIGN KEY (product_key) REFERENCES product_dimension(product_key),
-    FOREIGN KEY (store_key) REFERENCES store_dimension(store_key),
-    FOREIGN KEY (promotion_key) REFERENCES promotion_dimension(promotion_key),
-    FOREIGN KEY (cashier_key) REFERENCES cashier_dimension(cashier_key),
-    FOREIGN KEY (payment_method_key) REFERENCES payment_method_dimension(payment_method_key)
-);
+CREATE DATABASE IF NOT EXISTS retail_sales;
 
+USE retail_sales;
 
 -- TABLA DATE DIMENSION
 CREATE TABLE date_dimension(
@@ -62,4 +42,26 @@ CREATE TABLE promotion_dimention(
     promotion_media_type VARCHAR(100) NOT NULL,
     promotion_begin_date DATETIME NOT NULL,
     UNIQUE(promotion_key)
+);
+
+CREATE TABLE rental_sales_facts (
+    date_key INT,
+    product_key INT,
+    store_key INT,
+    promotion_key INT,
+    cashier_key INT,
+    pos_transaction_id INT,
+    sales_quantity INT,
+    regular_unit_price DECIMAL(10, 2),
+    discount_unit_price DECIMAL(10, 2),
+    net_unit_price DECIMAL(10, 2),
+    extended_discount_dollar_amount DECIMAL(10, 2),
+    extended_sales_dollar_amount DECIMAL(10, 2),
+    extended_cost_dollar_amount DECIMAL(10, 2),
+    extended_gross_profit_dollar_amount DECIMAL(10, 2),
+    FOREIGN KEY (date_key) REFERENCES cashier_dimension(cashier_key),
+    FOREIGN KEY (product_key) REFERENCES product_dimension(product_key),
+    FOREIGN KEY (store_key) REFERENCES store_dimension(store_key),
+    FOREIGN KEY (promotion_key) REFERENCES promotion_dimension(promotion_key),
+    FOREIGN KEY (cashier_key) REFERENCES cashier_dimension(cashier_key),
 );
