@@ -1,13 +1,13 @@
 
 
 -- TABLA DATE DIMENSION
-CREATE TABLE DATE_DIMENSION(
-    DATE_KEY INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE date_dimension(
+    date_key INT AUTO_INCREMENT PRIMARY KEY,
 	DATE DATE,
-    DAY_OF_WEEK ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
-    CALENDAR_MONTH ENUM('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
-    CALENDAR_QUARTER ENUM('Q1', 'Q2', 'Q3', 'Q4'),
-    CALENDAR_YEAR INT
+    day_of_week ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
+    calendar_month ENUM('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+    calendar_quarter ENUM('Q1', 'Q2', 'Q3', 'Q4'),
+    calendar_year INT
 );
 
 CREATE TABLE cashier_dimension (
@@ -16,12 +16,12 @@ CREATE TABLE cashier_dimension (
     cashier_name VARCHAR(100)
 );
 
-CREATE TABLE StoreDimension (
-  storeKey INT PRIMARY KEY,
-  storeNumber INT NOT NULL,
-  StoreName VARCHAR(255) NOT NULL,
-  StoreDisrict VARCHAR(50) NOT NULL,
-  storeRegion VARCHAR(50) NOT NULL,
+CREATE TABLE store_dimension (
+  store_key INT PRIMARY KEY,
+  store_number INT NOT NULL,
+  store_name VARCHAR(255) NOT NULL,
+  store_disrict VARCHAR(50) NOT NULL,
+  store_region VARCHAR(50) NOT NULL,
 );
 
 CREATE TABLE product_dimension(
