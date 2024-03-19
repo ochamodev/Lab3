@@ -1,6 +1,5 @@
 
 
-
 -- TABLA DATE DIMENSION
 CREATE TABLE DATE_DIMENSION(
     DATE_KEY INT AUTO_INCREMENT PRIMARY KEY,
@@ -10,8 +9,17 @@ CREATE TABLE DATE_DIMENSION(
     CALENDAR_QUARTER ENUM('Q1', 'Q2', 'Q3', 'Q4'),
     CALENDAR_YEAR INT
 );
+
 CREATE TABLE cashier_dimension (
     cashier_key INT PRIMARY KEY,
     cashier_employee_id INT NOT NULL UNIQUE,
     cashier_name VARCHAR(100)
+);
+
+CREATE TABLE StoreDimension (
+  storeKey INT PRIMARY KEY,
+  storeNumber INT NOT NULL,
+  StoreName VARCHAR(255) NOT NULL,
+  StoreDisrict VARCHAR(50) NOT NULL,
+  storeRegion VARCHAR(50) NOT NULL,
 );
