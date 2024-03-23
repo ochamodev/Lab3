@@ -45,7 +45,7 @@ CREATE TABLE sales_facts
      sale_id          VARCHAR (255) NOT NULL,
      date_key          INT NOT NULL REFERENCES dim_dates (date_key),
      sk_customer       INT NOT NULL REFERENCES dim_customer (sk_customer),
-     sk_geographyc    INT NOT NULL REFERENCES dim_geography(sk_postal_code),
+     sk_geographyc    INT NOT NULL REFERENCES dim_geography(sk_geographyc),
      sk_ship_mode      INT NOT NULL REFERENCES dim_ship_mode(sk_ship_mode),
      sk_product        INT NOT NULL REFERENCES dim_products(sk_product),
      sales             DECIMAL (18, 2) NULL,
