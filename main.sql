@@ -20,7 +20,7 @@ CREATE TABLE ship_mode_dimension
 
 CREATE TABLE geography_dimension 
   (
-     sk_geographyc   INT NOT NULL auto_increment PRIMARY KEY,
+     sk_geography   INT NOT NULL auto_increment PRIMARY KEY,
      country   VARCHAR (255) NULL,
      region VARCHAR (255) NULL,
      state  VARCHAR (255) NULL,
@@ -43,13 +43,17 @@ CREATE TABLE product_dimension
 CREATE TABLE sales_facts
   (
      sale_id          VARCHAR (255) NOT NULL,
-     date_key          INT NOT NULL REFERENCES dim_dates (date_key),
-     sk_customer       INT NOT NULL REFERENCES dim_customer (sk_customer),
-     sk_geographyc    INT NOT NULL REFERENCES dim_geography(sk_geographyc),
-     sk_ship_mode      INT NOT NULL REFERENCES dim_ship_mode(sk_ship_mode),
-     sk_product        INT NOT NULL REFERENCES dim_products(sk_product),
+     date_key          INT NOT NULL,
+     sk_customer       INT NOT NULL,
+     sk_geography      INT NOT NULL,
+     sk_ship_mode      INT NOT NULL,
+     sk_product        INT NOT NULL,
      sales             DECIMAL (18, 2) NULL,
      quantity          INT NULL,
      discount          DECIMAL (18, 2) NULL,
-     profit            DECIMAL(18, 2) NULL
-  ); 
+     profit            DECIMAL(18, 2) NULL,
+     FOREIGN KEY (sk_customer) REFERENCES customer_dimension (sk_customer),
+     FOREIGN KEY (sk_geography) REFERENCES geography_dimension(sk_geography),
+     FOREIGN KEY (sk_ship_mode) REFERENCES ship_mode_dimension(sk_ship_mode),
+     FOREIGN KEY (sk_product) REFERENCES product_dimension(sk_product)
+  );
